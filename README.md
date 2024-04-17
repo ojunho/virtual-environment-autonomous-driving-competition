@@ -11,7 +11,7 @@ it was based on simulator (named MORAI)
 ## Competition Poster
 
 <p align="center">
-  <img src="https://github.com/ojunho/MDAD_2023/assets/55116932/9725a921-83cf-46a8-8ade-63132139d93e" width="640"/>
+  <img src="https://github.com/ojunho/virtual-environment-autonomous-driving-competition/assets/55116932/9177549e-c3c4-469e-a35a-ea63ac97b780" width="640"/>
 </p>
 
 ## Getting Started
