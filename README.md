@@ -24,7 +24,7 @@ To get started with the project, follow these steps:
 cd
 mkdir -p catkin_ws/src
 cd catkin_ws/src
-git clone https://github.com/ojunho/MDAD_2023.git
+git clone https://github.com/ojunho/virtual-environment-autonomous-driving-competition.git
 ```
 
 
