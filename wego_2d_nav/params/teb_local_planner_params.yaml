@@ -1,0 +1,80 @@
+TebLocalPlannerROS:
+
+ odom_topic: /odometry/filtered
+ map_frame: odom
+    
+ # Trajectory
+  
+ teb_autosize: True
+ dt_ref: 0.3
+ dt_hysteresis: 0.1
+ global_plan_overwrite_orientation: True
+ max_global_plan_lookahead_dist: 5  # 3.0 경로 계획을 위해 내다볼 거리의 한계
+ feasibility_check_no_poses: 20 # 경로 계획을 위해 차량이 체크할 포즈의 갯수
+    
+ # Robot
+         
+ max_vel_x: 2.0 # 2.0 
+ max_vel_x_backwards: 2.0 # 1.0 
+ max_vel_theta: 5.0  # 1.0
+ acc_lim_x: 0.5  # 0.5
+ acc_lim_theta: 0.5  # 1.0  차량 최대 조향 각도 변화량 -> 이게 값이 작으면 한 번에 꺾을 수 있는 길도 후진, 전진, 후진, 전진 반복해서 헤딩을 맞춰주는 문제가 생김
+
+ # max_steer_angle = 19 deg; r = wheelbase/tan(max_steer_angle)
+ min_turning_radius: 0.755
+ footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
+   type: "polygon"
+   vertices: [[-0.1, -0.02], [-0.1, 0.02], [0.3, 0.02], [0.3, -0.02]] # for type "polygon"
+
+ # GoalTolerance
+    
+ xy_goal_tolerance: 0.05
+ yaw_goal_tolerance: 0.05
+ free_goal_vel: False
+    
+ # Obstacles
+    
+ min_obstacle_dist: 0.1  # 장애물과의 최소 이격 거리 -> 이 값이 크면 장애물과 최대한 멀리 떨어져 있으려고 하다 보니 좁은 길은 아예 못지나가는 문제가 생김
+ include_costmap_obstacles: True
+ costmap_obstacles_behind_robot_dist: 0.1  # 1.0  후방에 있는 장애물과의 최소 이격 거리
+ obstacle_poses_affected: 30 
+ costmap_converter_plugin: "costmap_converter::CostmapToPolygonsDBSMCCH"
+ costmap_converter_spin_thread: True
+ costmap_converter_rate: 5
+
+
+
+################################### 이 아래 값들은 변경하지 마세요 ####################################
+
+ # Optimization
+    
+ no_inner_iterations: 5
+ no_outer_iterations: 4
+ optimization_activate: True
+ optimization_verbose: False
+ penalty_epsilon: 0.1
+ weight_max_vel_x: 2
+ weight_max_vel_theta: 1
+ weight_acc_lim_x: 1
+ weight_acc_lim_theta: 1
+ weight_kinematics_nh: 1000
+ weight_kinematics_forward_drive: 1
+ weight_kinematics_turning_radius: 1
+ weight_optimaltime: 1
+ weight_obstacle: 50
+ weight_dynamic_obstacle: 10 # not in use yet
+ alternative_time_cost: False # not in use yet
+
+ # Homotopy Class Planner
+
+ enable_homotopy_class_planning: True
+ enable_multithreading: True
+ simple_exploration: False
+ max_number_classes: 4
+ roadmap_graph_no_samples: 15
+ roadmap_graph_area_width: 5
+ h_signature_prescaler: 0.5
+ h_signature_threshold: 0.1
+ obstacle_keypoint_offset: 0.1
+ obstacle_heading_threshold: 0.45
+ visualize_hc_graph: False

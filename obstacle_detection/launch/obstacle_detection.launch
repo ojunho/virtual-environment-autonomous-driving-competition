@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<node pkg="convert_lidar" type="convert_lidar" name="convert_lidar"/>
+
+	<node pkg="obstacle_detection" type="obstacle_detection_dynamic_static" name="obstacle_detection_dynamic_static"/>
+	<node pkg="obstacle_detection" type="obstacle_detection_rotary" name="obstacle_detection_rotary"/>
+
+</launch>
